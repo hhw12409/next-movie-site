@@ -3,6 +3,7 @@ import Head from "next/head";
 import Seo from "./Seo";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IMovie {
   id: number;
@@ -15,10 +16,12 @@ const Home = ({ results }: InferGetServerSidePropsType<GetServerSideProps>) => {
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie: IMovie) => (
-        <div className="movie" key={movie.id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-          <h4>{movie.original_title}</h4>
-        </div>
+        <Link href={`/movies/${movie.id}}`}>
+          <div className="movie" key={movie.id}>
+            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+            <h4>{movie.original_title}</h4>
+          </div>
+        </Link>
       ))}
       <style jsx>{`
         .container {
