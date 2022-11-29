@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { NextPageContext } from "next";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Seo from "../Seo";
 
 const Detail = ({
   params,
@@ -9,6 +10,7 @@ const Detail = ({
   const [title, id] = params || [];
   return (
     <div>
+      <Seo title={title} />
       <h4>{title}</h4>
     </div>
   );
