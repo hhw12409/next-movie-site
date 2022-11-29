@@ -1,8 +1,6 @@
 import React from "react";
-import Head from "next/head";
 import Seo from "./Seo";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
