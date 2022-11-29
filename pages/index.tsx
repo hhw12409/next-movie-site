@@ -15,15 +15,7 @@ interface IMovie {
 const Home = ({ results }: InferGetServerSidePropsType<GetServerSideProps>) => {
   const router = useRouter();
   const onClick = (id: number, title: string) => {
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title,
-        },
-      },
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
   return (
     <div className="container">
@@ -35,15 +27,7 @@ const Home = ({ results }: InferGetServerSidePropsType<GetServerSideProps>) => {
           className="movie"
         >
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-          <Link
-            href={{
-              pathname: `/movies/${movie.id}`,
-              query: {
-                title: movie.original_title,
-              },
-            }}
-            as={`/movies/${movie.id}`}
-          >
+          <Link href={`/movies/${movie.original_title}/${movie.id}`}>
             <h4>{movie.original_title}</h4>
           </Link>
         </div>
