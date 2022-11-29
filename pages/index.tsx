@@ -29,15 +29,24 @@ const Home = ({ results }: InferGetServerSidePropsType<GetServerSideProps>) => {
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie: IMovie) => (
-        <Link href={`/movies/${movie.id}}`} key={movie.id}>
-          <div
-            className="movie"
-            onClick={() => onClick(movie.id, movie.original_title)}
+        <div
+          key={movie.id}
+          onClick={() => onClick(movie.id, movie.original_title)}
+          className="movie"
+        >
+          <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+          <Link
+            href={{
+              pathname: `/movies/${movie.id}`,
+              query: {
+                title: movie.original_title,
+              },
+            }}
+            as={`/movies/${movie.id}`}
           >
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             <h4>{movie.original_title}</h4>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
       <style jsx>{`
         .container {

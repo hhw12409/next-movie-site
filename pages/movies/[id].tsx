@@ -5,7 +5,7 @@ const Detail = () => {
   console.log(router);
   return (
     <div>
-      <h1>Hello Detail page</h1>
+      <h4>{router.query.title || "Loading..."}</h4>
     </div>
   );
 };
